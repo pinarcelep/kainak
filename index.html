@@ -1,0 +1,529 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="KAINAK: Şema terapi kitapçığı, yin yoga grupları ve online psikolojik danışmanlık. İstanbul'dan bir beden-zihin alanı.">
+<meta property="og:title" content="KAINAK">
+<meta property="og:description" content="Zihnin ve bedenin kaynağına dönmek için bir yer.">
+<meta name="theme-color" content="#173840">
+<style>
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0}
+img{max-width:100%;height:auto}
+[hidden]{display:none!important}
+</style>
+<title>KAINAK</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,300;1,6..72,400&family=Figtree:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: Boğaz'a açılan bir defter — su halkalı giriş, kitapçıktan bir gözlem sayfası, sonra hizmetler, yazılar, ses, kişi ve iletişim. Sol hizalı, geniş nefes payı. */
+/* Sıcak taş zemin; giriş akşamüstü Boğaz'ı gibi derin su + altın ışık */
+:root{
+  --bg:#E9E7DE;        /* sıcak taş */
+  --surface:#FAF9F4;
+  --ink:#1B2A2E;
+  --muted:#5A6361;
+  --line:#D5D2C6;
+  --sea:#23586A;       /* Boğaz mavisi */
+  --sea-soft:#D3E1DE;
+  --fig:#4E6853;       /* adaçayı yeşili */
+  --fig-soft:#DCE2D3;
+  --on-sea:#F5F7F5;
+  --foot:#1D4148;      /* derin su */
+  --foot-fg:#ECE9E0;
+  --dusk-1:#173840;    /* giriş: derin su */
+  --dusk-2:#285A60;
+  --dusk-light:#E6C495;/* giriş: akşam ışığı */
+  --dusk-mist:#7FAFAE;
+  --f-display:"Newsreader", "Iowan Old Style", Georgia, serif;
+  --f-body:"Figtree", "Segoe UI", system-ui, sans-serif;
+  --f-mono:"DM Mono", ui-monospace, Menlo, monospace;
+  --wrap:1120px;
+  --gut:clamp(16px,4vw,40px);
+  color-scheme:light;
+}
+/* KAINAK markası bilinçli olarak tek, açık bir temada sabit: koyu mod yok. */
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:84px}
+body{background:var(--bg);color:var(--ink);font:400 17px/1.65 var(--f-body);-webkit-font-smoothing:antialiased}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--sea);outline-offset:3px;border-radius:4px}
+.wrap{max-width:var(--wrap);margin:0 auto;padding-inline:var(--gut)}
+h1,h2,h3{font-family:var(--f-display);font-weight:400;text-wrap:balance;margin:0;letter-spacing:-.01em}
+h2{font-size:clamp(2rem,4.2vw,3rem);line-height:1.08}
+h3{font-size:1.45rem;line-height:1.2}
+p{margin:0}
+.eyebrow{font:500 .74rem/1 var(--f-mono);letter-spacing:.14em;text-transform:uppercase;color:var(--sea)}
+.lede{font-size:1.12rem;color:var(--muted);max-width:60ch}
+.btn{display:inline-flex;align-items:center;gap:.6em;padding:.85em 1.4em;border-radius:999px;border:1px solid var(--ink);font:600 .95rem/1 var(--f-body);text-decoration:none;cursor:pointer;background:transparent;color:var(--ink);transition:background .2s,color .2s}
+.btn:hover{background:var(--ink);color:var(--bg)}
+.btn.primary{background:var(--sea);border-color:var(--sea);color:var(--on-sea)}
+.btn.primary:hover{background:var(--ink);border-color:var(--ink);color:var(--bg)}
+section{padding-block:clamp(64px,9vw,120px);border-top:1px solid var(--line)}
+.sec-head{display:grid;gap:14px;margin-bottom:clamp(32px,5vw,56px);max-width:720px}
+
+/* header */
+header.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:20px;min-height:64px}
+.logo{font:500 1.35rem/1 var(--f-display);letter-spacing:.28em;text-decoration:none}
+.logo span{color:var(--sea)}
+nav.main{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none}
+nav.main::-webkit-scrollbar{display:none}
+nav.main a{font:500 .9rem/1 var(--f-body);text-decoration:none;padding:.6em .8em;border-radius:999px;white-space:nowrap;color:var(--muted)}
+nav.main a:hover{color:var(--ink);background:var(--surface)}
+@media (max-width:760px){.top .wrap{flex-wrap:wrap;padding-block:10px;min-height:0}nav.main{width:100%;margin-inline:-8px}}
+
+/* hero */
+.hero{position:relative;overflow:hidden;border-top:0;padding-block:clamp(64px,9vw,120px) clamp(64px,8vw,108px);
+  /* hero içinde metin ve buton tokenları açık tona döner */
+  --ink:#F3EFE6;--muted:#C4D3D0;--sea:var(--dusk-light);--on-sea:#1A3339;--bg:var(--dusk-1);--line:rgba(243,239,230,.28);--fig:var(--dusk-light);
+  color:var(--ink);
+  background:
+    radial-gradient(ellipse 75% 65% at 88% 105%, color-mix(in srgb,var(--dusk-light) 55%,transparent) 0%, transparent 68%),
+    radial-gradient(ellipse 60% 60% at 8% 0%, color-mix(in srgb,var(--dusk-mist) 45%,transparent) 0%, transparent 70%),
+    linear-gradient(165deg,var(--dusk-1) 0%,var(--dusk-2) 100%)}
+#ripples{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.hero .wrap{position:relative;display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,.9fr);gap:clamp(32px,5vw,72px);align-items:end}
+.hero h1{font-size:clamp(2.7rem,6.6vw,5.4rem);line-height:1;font-weight:300}
+.hero h1 em{font-style:italic;color:var(--sea)}
+.hero .intro{display:grid;gap:26px}
+.hero .cta{display:flex;flex-wrap:wrap;gap:12px}
+.word{font:400 .95rem/1.55 var(--f-body);color:var(--muted);border-left:1px solid var(--line);padding-left:20px;display:grid;gap:10px;max-width:34ch}
+.word b{font:italic 400 1.5rem/1.1 var(--f-display);color:var(--ink)}
+.word .ipa{font:400 .8rem/1 var(--f-mono);color:var(--fig)}
+@media (max-width:820px){.hero .wrap{grid-template-columns:1fr}}
+
+/* booklet */
+.book{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(32px,6vw,80px);align-items:start}
+@media (max-width:860px){.book{grid-template-columns:1fr}}
+.book-info{display:grid;gap:28px}
+.contents{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+.contents li{display:grid;grid-template-columns:3.2em 1fr;gap:8px;padding:14px 0;border-bottom:1px solid var(--line)}
+.contents .n{font:400 .82rem/1.9 var(--f-mono);color:var(--muted);font-variant-numeric:tabular-nums}
+.contents b{font-weight:600}
+.contents small{display:block;color:var(--muted);font-size:.9rem}
+.buy{display:flex;flex-wrap:wrap;align-items:center;gap:18px 24px;padding:22px 24px;background:var(--surface);border:1px solid var(--line);border-radius:14px}
+.price{font:400 2rem/1 var(--f-display)}
+.price small{display:block;font:400 .78rem/1.4 var(--f-mono);color:var(--muted);letter-spacing:.04em;margin-top:6px}
+.fine{font-size:.85rem;color:var(--muted)}
+
+/* journal sample page */
+.page{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:clamp(22px,3vw,34px);box-shadow:0 1px 0 var(--line),0 24px 48px -32px color-mix(in srgb,var(--ink) 40%,transparent);display:grid;gap:20px;transform:rotate(-.6deg)}
+.page .ph{display:flex;justify-content:space-between;align-items:baseline;gap:12px;border-bottom:1px dashed var(--line);padding-bottom:12px}
+.page .ph span{font:400 .75rem/1 var(--f-mono);color:var(--muted);letter-spacing:.08em}
+.page h3{font-style:italic}
+.q{display:grid;gap:8px}
+.q label{font:500 .72rem/1 var(--f-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.q .lined{min-height:2.2em;border-bottom:1px solid var(--line);font:italic 400 1.05rem/1.5 var(--f-display);color:var(--ink);padding-bottom:4px}
+.modes{display:flex;flex-wrap:wrap;gap:8px}
+.mode{font:500 .85rem/1 var(--f-body);padding:.55em .9em;border-radius:999px;border:1px solid var(--line);background:transparent;color:var(--ink);cursor:pointer}
+.mode[aria-pressed="true"]{background:var(--fig);border-color:var(--fig);color:var(--surface)}
+.mantra{background:var(--fig-soft);border-radius:10px;padding:16px 18px;display:grid;gap:6px}
+.mantra span{font:500 .7rem/1 var(--f-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--fig)}
+.mantra p{font:italic 400 1.2rem/1.4 var(--f-display)}
+.scale{display:flex;gap:6px}
+.scale button{flex:1;min-width:0;padding:.5em 0;border:1px solid var(--line);background:transparent;border-radius:6px;font:400 .85rem/1 var(--f-mono);color:var(--muted);cursor:pointer;font-variant-numeric:tabular-nums}
+.scale button[aria-pressed="true"]{background:var(--sea);border-color:var(--sea);color:var(--on-sea)}
+
+/* services */
+.services{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(20px,3vw,32px)}
+@media (max-width:820px){.services{grid-template-columns:1fr}}
+.svc{display:grid;gap:18px;align-content:start;padding:clamp(24px,3.5vw,40px);border-radius:18px}
+.svc.yin{background:var(--sea-soft)}
+.svc.one{background:var(--fig-soft)}
+.svc .tag{font:500 .72rem/1 var(--f-mono);letter-spacing:.14em;text-transform:uppercase}
+.svc.yin .tag{color:var(--sea)} .svc.one .tag{color:var(--fig)}
+.svc h3{font-size:1.9rem}
+.facts{display:grid;grid-template-columns:auto 1fr;gap:8px 18px;margin:0;font-size:.95rem}
+.facts dt{font:400 .8rem/1.9 var(--f-mono);color:var(--muted)}
+.facts dd{margin:0}
+.note{font-size:.88rem;color:var(--muted);border-top:1px solid var(--line);padding-top:16px;margin-top:4px}
+
+/* form */
+.apply{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(28px,5vw,72px);margin-top:clamp(56px,7vw,88px)}
+@media (max-width:860px){.apply{grid-template-columns:1fr}}
+form{display:grid;gap:18px}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+@media (max-width:560px){.row2{grid-template-columns:1fr}}
+.field{display:grid;gap:6px;min-width:0}
+.field label{font:500 .85rem/1.2 var(--f-body)}
+input[type=text],input[type=email],select,textarea{width:100%;font:400 1rem/1.4 var(--f-body);color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:.8em .9em}
+textarea{min-height:130px;resize:vertical}
+input:focus,select:focus,textarea:focus{outline:2px solid var(--sea);outline-offset:0;border-color:transparent}
+.check{display:flex;gap:10px;align-items:flex-start;font-size:.88rem;color:var(--muted)}
+.check input{margin-top:.3em;accent-color:var(--sea)}
+.sent{background:var(--sea-soft);border-radius:12px;padding:18px 20px}
+.sent b{font-family:var(--f-display);font-weight:400;font-size:1.3rem;display:block;margin-bottom:4px}
+
+/* writing */
+.posts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(20px,3vw,36px)}
+@media (max-width:900px){.posts{grid-template-columns:1fr}}
+.post{display:grid;gap:12px;align-content:start;padding-top:20px;border-top:2px solid var(--ink);text-decoration:none}
+.post .meta{display:flex;gap:12px;font:400 .76rem/1 var(--f-mono);color:var(--muted);letter-spacing:.04em}
+.post h3{transition:color .2s}
+.post:hover h3{color:var(--sea)}
+.post p{color:var(--muted);font-size:.97rem}
+.post .more{font:600 .88rem/1 var(--f-body);color:var(--sea)}
+.sample{font:500 .66rem/1 var(--f-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--fig);border:1px solid currentColor;border-radius:4px;padding:.3em .45em}
+
+/* podcast */
+.pod{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(28px,5vw,72px);align-items:start}
+@media (max-width:860px){.pod{grid-template-columns:1fr}}
+.cover{aspect-ratio:1;max-width:100%;border-radius:16px;background:var(--sea);color:var(--on-sea);position:relative;overflow:hidden;display:grid;align-content:end;padding:clamp(22px,3vw,32px)}
+.cover canvas{position:absolute;inset:0;width:100%;height:100%}
+.cover .t{position:relative;display:grid;gap:8px}
+.cover .t b{font:300 clamp(2rem,4vw,2.8rem)/1 var(--f-display);letter-spacing:.2em}
+.cover .t span{font:400 .8rem/1.4 var(--f-mono);letter-spacing:.08em;opacity:.85}
+.eps{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+.ep{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:18px;align-items:center;padding:18px 0;border-bottom:1px solid var(--line)}
+.ep .no{font:400 .82rem/1 var(--f-mono);color:var(--muted);font-variant-numeric:tabular-nums}
+.ep h3{font-size:1.2rem}
+.ep p{font-size:.9rem;color:var(--muted)}
+.ep .dur{font:400 .8rem/1 var(--f-mono);color:var(--muted);font-variant-numeric:tabular-nums}
+.listen{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+
+/* about */
+.about{display:grid;grid-template-columns:minmax(0,.7fr) minmax(0,1.3fr);gap:clamp(28px,5vw,72px)}
+@media (max-width:860px){.about{grid-template-columns:1fr}}
+.portrait{aspect-ratio:4/5;max-width:100%;border-radius:200px 200px 16px 16px;background:linear-gradient(180deg,var(--sea-soft),var(--fig-soft));display:grid;place-items:center;text-align:center;color:var(--muted);font:400 .8rem/1.5 var(--f-mono);padding:24px}
+.about-text{display:grid;gap:20px;max-width:62ch}
+.about-text .big{font:300 clamp(1.5rem,2.6vw,2rem)/1.3 var(--f-display)}
+.creds{display:flex;flex-wrap:wrap;gap:8px}
+.creds span{font:500 .82rem/1 var(--f-body);padding:.6em .9em;border-radius:999px;background:var(--surface);border:1px solid var(--line)}
+
+/* footer */
+footer{background:var(--foot);color:var(--foot-fg);padding-block:clamp(56px,8vw,96px) 40px}
+footer .wrap{display:grid;gap:48px}
+.f-top{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:40px;align-items:end}
+@media (max-width:760px){.f-top{grid-template-columns:1fr}}
+.f-top h2{color:var(--foot-fg);font-weight:300}
+.socials{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:color-mix(in srgb,var(--foot-fg) 20%,transparent);border:1px solid color-mix(in srgb,var(--foot-fg) 20%,transparent);border-radius:12px;overflow:hidden}
+.socials a{background:var(--foot);padding:18px 20px;text-decoration:none;display:grid;gap:4px}
+.socials a:hover{background:color-mix(in srgb,var(--foot) 78%,var(--sea))}
+.socials b{font:500 1rem/1 var(--f-body)}
+.socials span{font:400 .78rem/1 var(--f-mono);opacity:.65}
+.f-bot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;font:400 .8rem/1.5 var(--f-mono);opacity:.7;border-top:1px solid color-mix(in srgb,var(--foot-fg) 20%,transparent);padding-top:24px}
+
+
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <a class="logo" href="#giris" aria-label="KAINAK ana sayfa">KAIN<span>A</span>K</a>
+    <nav class="main" aria-label="Ana menü">
+      <a href="#kitapcik">Kitapçık</a>
+      <a href="#hizmetler">Hizmetler</a>
+      <a href="#yazilar">Yazılar</a>
+      <a href="#podcast">Podcast</a>
+      <a href="#hakkimda">Hakkımda</a>
+      <a href="#iletisim">İletişim</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<section class="hero" id="giris">
+  <canvas id="ripples" aria-hidden="true"></canvas>
+  <div class="wrap">
+    <div class="intro">
+      <p class="eyebrow">Şema terapi · Yin yoga · An'da kalmak</p>
+      <h1>Zihnin ve bedenin <em>kaynağına</em> dönmek için bir yer.</h1>
+      <p class="lede">KAINAK, duygularını, düşüncelerini ve bedenini birlikte dinlemek isteyenler için İstanbul'dan bir psikoloji ve beden-zihin alanı. Kendi hızında okuyabileceğin bir kitapçık, küçük gruplarla yin yoga ve birebir online görüşmeler.</p>
+      <div class="cta">
+        <a class="btn primary" href="#kitapcik">Kitapçığı incele</a>
+        <a class="btn" href="#hizmetler">Hizmetlere bak</a>
+      </div>
+    </div>
+    <aside class="word" aria-label="İsmin anlamı">
+      <b>kaynak</b>
+      <span class="ipa">isim · /kaj'nak/</span>
+      <p>Suyun yerden kendiliğinden çıktığı yer; bir şeyin çıkış noktası. KAINAK, bu kelimeden doğdu: kendimize dönebileceğimiz, tazelenip yeniden akabileceğimiz yer.</p>
+    </aside>
+  </div>
+</section>
+
+<section id="kitapcik">
+  <div class="wrap book">
+    <div class="book-info">
+      <div class="sec-head" style="margin-bottom:0">
+        <p class="eyebrow">Kitapçık · PDF</p>
+        <h2>Kendi şemalarını tanımak için bir çalışma kitabı</h2>
+        <p class="lede">Şema Terapi'yi sade bir dille anlatan, her sayfasında kendini gözlemleyip not alabileceğin bir kitapçık. Okurken duygularını, düşüncelerini ve davranışlarını takip eder; mantra ve meditasyonlarla bedene geri dönersin.</p>
+      </div>
+      <ol class="contents">
+        <li><span class="n">I</span><div><b>Şema nedir?</b><small>Çocuklukta karşılanmayan ihtiyaçlar ve bugüne taşıdığımız haritalar</small></div></li>
+        <li><span class="n">II</span><div><b>Modlar</b><small>Kırılgan Çocuk, Cezalandırıcı Ebeveyn, Sağlıklı Yetişkin ve diğerleri</small></div></li>
+        <li><span class="n">III</span><div><b>Gözlem sayfaları</b><small>Duygu, düşünce, beden ve davranışı yan yana izlemek</small></div></li>
+        <li><span class="n">IV</span><div><b>Mantralar ve meditasyonlar</b><small>Sinir sistemini yatıştıran kısa beden-zihin pratikleri</small></div></li>
+      </ol>
+      <div class="buy">
+        <div class="price">₺ —<small>Dijital PDF · anında indirme</small></div>
+        <a class="btn primary" href="#kitapcik" data-shopier="true">Shopier ile satın al</a>
+      </div>
+      <p class="fine">Ödeme Shopier üzerinden güvenle alınır; indirme bağlantısı e-posta adresine gönderilir. Kitapçık bir terapi sürecinin yerini tutmaz, onu destekleyen bir kaynaktır.</p>
+    </div>
+
+    <div class="page" aria-label="Kitapçıktan örnek gözlem sayfası">
+      <div class="ph"><h3>Bugünkü gözlemim</h3><span>s. 24</span></div>
+      <div class="q"><label>Ne oldu?</label><div class="lined">Toplantıda fikrim geçiştirildi.</div></div>
+      <div class="q"><label>Bedenimde ne hissettim?</label><div class="lined">Göğsümde sıkışma, yüzümde sıcaklık.</div></div>
+      <div class="q">
+        <label id="lbl-int">Duygunun şiddeti</label>
+        <div class="scale" role="group" aria-labelledby="lbl-int" id="scale"></div>
+      </div>
+      <div class="q">
+        <label id="lbl-mode">Hangi mod devredeydi?</label>
+        <div class="modes" role="group" aria-labelledby="lbl-mode" id="modes"></div>
+      </div>
+      <div class="mantra" aria-live="polite">
+        <span>Mantra</span>
+        <p id="mantra-text"></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="hizmetler">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Hizmetler</p>
+      <h2>Birlikte çalışmanın iki yolu</h2>
+      <p class="lede">Kimi zaman bir grupla aynı nefeste durmak, kimi zaman biriyle yalnızca kendi hikâyene bakmak iyi gelir.</p>
+    </div>
+    <div class="services">
+      <article class="svc yin">
+        <p class="tag">Kapalı grup · Yüz yüze</p>
+        <h3>Yin yoga ve beden-zihin atölyeleri</h3>
+        <p>Pozlarda uzun süre kalarak bedeni yumuşatan, dikkati içeri çeviren yavaş bir pratik. Her buluşmada kısa bir psikoeğitim, nefes çalışması ve paylaşım çemberi var.</p>
+        <dl class="facts">
+          <dt>Grup</dt><dd>En fazla 8 kişi, kapalı ve süreklilik gösteren</dd>
+          <dt>Süre</dt><dd>90 dakika, haftada bir</dd>
+          <dt>Yer</dt><dd>İstanbul · stüdyo bilgisi başvuru sonrası</dd>
+          <dt>Seviye</dt><dd>Deneyim gerekmez</dd>
+        </dl>
+        <a class="btn" href="#basvuru" data-svc="yin">Gruba başvur</a>
+      </article>
+      <article class="svc one">
+        <p class="tag">Birebir · Online</p>
+        <h3>Online psikolojik danışmanlık</h3>
+        <p>Tekrar eden duygusal örüntülerini, ilişkilerini ve bedeninin verdiği sinyalleri Şema Terapi ve beden odaklı yaklaşımlarla birlikte ele aldığımız görüşmeler.</p>
+        <dl class="facts">
+          <dt>Görüşme</dt><dd>50 dakika, görüntülü</dd>
+          <dt>Başlangıç</dt><dd>Ücretsiz 15 dakikalık tanışma görüşmesi</dd>
+          <dt>Dil</dt><dd>Türkçe · İngilizce</dd>
+          <dt>Gizlilik</dt><dd>Tüm görüşmeler etik kurallara bağlı ve gizlidir</dd>
+        </dl>
+        <a class="btn" href="#basvuru" data-svc="one">Tanışma görüşmesi iste</a>
+      </article>
+    </div>
+    <p class="note">Kendine ya da bir başkasına zarar verme düşüncen varsa lütfen beklemeden 112'yi ara. Online danışmanlık acil durumlar için uygun değildir.</p>
+
+    <div class="apply" id="basvuru">
+      <div class="sec-head" style="margin-bottom:0">
+        <p class="eyebrow">Başvuru ve iletişim</p>
+        <h2>Bana yaz</h2>
+        <p class="lede">Hangi hizmetle ilgilendiğini ve kısaca neye ihtiyaç duyduğunu yaz. İki iş günü içinde sana dönüyorum.</p>
+      </div>
+      <form id="form" novalidate>
+        <div class="row2">
+          <div class="field"><label for="f-name">Adın</label><input type="text" id="f-name" autocomplete="name" required></div>
+          <div class="field"><label for="f-mail">E-posta</label><input type="email" id="f-mail" autocomplete="email" required></div>
+        </div>
+        <div class="field">
+          <label for="f-svc">İlgilendiğin alan</label>
+          <select id="f-svc">
+            <option value="yin">Yin yoga kapalı grup</option>
+            <option value="one">Birebir online danışmanlık</option>
+            <option value="book">Kitapçık hakkında bir soru</option>
+            <option value="other">Başka bir konu</option>
+          </select>
+        </div>
+        <div class="field"><label for="f-msg">Mesajın</label><textarea id="f-msg" placeholder="Kısaca kendinden ve beklentilerinden bahsedebilirsin."></textarea></div>
+        <label class="check"><input type="checkbox" id="f-kvkk" required> Kişisel verilerimin yalnızca bu başvuruya yanıt vermek için işlenmesine KVKK kapsamında onay veriyorum.</label>
+        <div><button class="btn primary" type="submit">Gönder</button></div>
+        <p class="fine" id="f-err" hidden></p>
+        <div class="sent" id="f-ok" hidden><b>Teşekkürler.</b>Bu bir önizleme: site yayına alındığında mesajın doğrudan KAINAK'ın e-posta kutusuna ulaşacak.</div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<section id="yazilar">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Yazılar</p>
+      <h2>Kıyıdan notlar</h2>
+      <p class="lede">Şemalar, beden ve şehirde an'da kalmak üzerine kısa yazılar.</p>
+    </div>
+    <div class="posts">
+      <a class="post" href="#yazilar">
+        <div class="meta"><span>Şema terapi</span><span>6 dk</span><span class="sample">örnek</span></div>
+        <h3>Şemalar nerede başlar? Çocukluktan kalan haritalar</h3>
+        <p>Bugün verdiğimiz tepkilerin çoğu, bir zamanlar bizi korumak için çizilmiş eski haritalardan gelir.</p>
+        <span class="more">Oku</span>
+      </a>
+      <a class="post" href="#yazilar">
+        <div class="meta"><span>Yin yoga</span><span>4 dk</span><span class="sample">örnek</span></div>
+        <h3>Bir pozda üç dakika: Beklemeyi öğrenmek</h3>
+        <p>Yin yogada kalmak, rahatsızlıkla kaçmadan durabilmenin bedendeki provasıdır.</p>
+        <span class="more">Oku</span>
+      </a>
+      <a class="post" href="#yazilar">
+        <div class="meta"><span>Farkındalık</span><span>5 dk</span><span class="sample">örnek</span></div>
+        <h3>Vapurda bir nefes: İstanbul'da an'da kalmak</h3>
+        <p>Kalabalık bir şehirde yavaşlamak için dağ başına gitmek gerekmez; Kadıköy iskelesi de yeter.</p>
+        <span class="more">Oku</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section id="podcast">
+  <div class="wrap pod">
+    <div class="cover" aria-label="KAINAK podcast kapağı">
+      <canvas id="cover-ripples" aria-hidden="true"></canvas>
+      <div class="t"><b>KAINAK</b><span>Psikoloji, beden ve an üzerine<br>her ay yeni bir bölüm</span></div>
+    </div>
+    <div>
+      <div class="sec-head">
+        <p class="eyebrow">Podcast</p>
+        <h2>Sesli sohbetler</h2>
+        <p class="lede">Şema ve somatik psikoloji, ilişkiler ve beden üzerine ayda bir bölüm. Yürürken, vapurda ya da yatmadan önce dinleyebilirsin.</p>
+      </div>
+      <ol class="eps">
+        <li class="ep"><span class="no">03</span><div><h3>Beden hatırlar mı?</h3><p>Somatik belirtiler ve bağlamın önemi</p></div><span class="dur">38:12</span></li>
+        <li class="ep"><span class="no">02</span><div><h3>İçimizdeki sert ses</h3><p>Talepkâr ebeveyn modu ile tanışmak</p></div><span class="dur">41:05</span></li>
+        <li class="ep"><span class="no">01</span><div><h3>Neden KAINAK?</h3><p>Zihin ve bedeni birlikte düşünmek</p></div><span class="dur">27:40</span></li>
+      </ol>
+      <div class="listen">
+        <a class="btn" href="#podcast">Spotify</a>
+        <a class="btn" href="#podcast">Apple Podcasts</a>
+        <a class="btn" href="#podcast">YouTube</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="hakkimda">
+  <div class="wrap about">
+    <div class="portrait">Portre fotoğrafı<br>doğal ışık, sade arka plan</div>
+    <div class="about-text">
+      <p class="eyebrow">Hakkımda</p>
+      <h2>Merhaba, ben Pınar.</h2>
+      <p class="big">Klinik psikoloğum. İnsanların kendi içlerindeki kaynağa dönebilmesine, şefkatle ve acele etmeden eşlik etmek istiyorum.</p>
+      <p>Bu bölümün metnini birlikte yazacağız. Burada eğitimin, Şema Terapi ve yin yoga ile yolunun nasıl kesiştiği, çalışma yaklaşımın ve KAINAK'ı neden kurduğun yer alacak. Ziyaretçinin ilk güven duyacağı yer burası olduğu için sıcak ama net bir dil kuracağız.</p>
+      <div class="creds">
+        <span>Klinik Psikolog</span>
+        <span>Şema Terapi</span>
+        <span>Yin Yoga Eğitmeni</span>
+        <span>Somatik yaklaşımlar</span>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer id="iletisim">
+  <div class="wrap">
+    <div class="f-top">
+      <h2>Kaynağa dönmek için<br>acele etmene gerek yok.</h2>
+      <div class="socials">
+        <a href="#iletisim"><b>Instagram</b><span>Günlük pratikler</span></a>
+        <a href="#iletisim"><b>YouTube</b><span>Meditasyonlar</span></a>
+        <a href="#iletisim"><b>Spotify</b><span>Podcast</span></a>
+        <a href="#iletisim"><b>LinkedIn</b><span>Profesyonel</span></a>
+      </div>
+    </div>
+    <div class="f-bot">
+      <span>Pınar Celep | KAINAK · İstanbul</span>
+      <span>© 2026 · KVKK Aydınlatma Metni · Gizlilik</span>
+    </div>
+  </div>
+</footer>
+
+
+<script>
+(function(){
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function ripples(canvas, opts){
+    var ctx = canvas.getContext('2d'), w, h, dpr, t0 = performance.now();
+    function size(){
+      dpr = Math.min(window.devicePixelRatio||1, 2);
+      var r = canvas.getBoundingClientRect(); w = r.width; h = r.height;
+      canvas.width = w*dpr; canvas.height = h*dpr; ctx.setTransform(dpr,0,0,dpr,0,0);
+    }
+    function color(){ return getComputedStyle(canvas).getPropertyValue(opts.token).trim() || '#23586A'; }
+    function draw(now){
+      var c = color(), t = (now - t0)/1000;
+      ctx.clearRect(0,0,w,h);
+      opts.sources.forEach(function(s){
+        var cx = s[0]*w, cy = s[1]*h, max = Math.max(w,h)*s[2];
+        for(var i=0;i<opts.rings;i++){
+          var p = ((t*opts.speed + i/opts.rings) % 1);
+          var r = p*max;
+          ctx.beginPath(); ctx.ellipse(cx, cy, r, r*opts.flat, 0, 0, Math.PI*2);
+          ctx.strokeStyle = c; ctx.globalAlpha = (1-p)*opts.alpha; ctx.lineWidth = 1; ctx.stroke();
+        }
+      });
+      ctx.globalAlpha = 1;
+      if(!reduce) requestAnimationFrame(draw);
+    }
+    size(); window.addEventListener('resize', size);
+    requestAnimationFrame(draw);
+  }
+  ripples(document.getElementById('ripples'), {token:'--sea', sources:[[0.86,0.78,0.55],[0.62,1.05,0.4]], rings:9, speed:0.035, flat:0.34, alpha:0.35});
+  ripples(document.getElementById('cover-ripples'), {token:'--on-sea', sources:[[0.7,0.32,0.9]], rings:10, speed:0.03, flat:1, alpha:0.35});
+
+  // Sample journal page
+  var modes = [
+    ['Kırılgan Çocuk','Hissettiklerim gerçek ve önemli. Şu an kendime yumuşakça eşlik edebilirim.'],
+    ['Öfkeli Çocuk','Öfkem bir ihtiyacı haber veriyor. Önce nefes alıyorum, sonra ne istediğimi söylüyorum.'],
+    ['Cezalandırıcı Ebeveyn','Bu ses bir zamanlar beni korumaya çalıştı. Artık ona inanmak zorunda değilim.'],
+    ['Kopuk Koruyucu','Uzaklaşmak tanıdık geliyor. Bir adım geri gelip bedenimi fark ediyorum.'],
+    ['Sağlıklı Yetişkin','Buradayım. Hem ihtiyacımı hem de gerçeği aynı anda tutabilirim.']
+  ];
+  var modeWrap = document.getElementById('modes'), mantra = document.getElementById('mantra-text');
+  modes.forEach(function(m, i){
+    var b = document.createElement('button'); b.type='button'; b.className='mode'; b.textContent=m[0];
+    b.setAttribute('aria-pressed', i===0 ? 'true':'false');
+    b.addEventListener('click', function(){
+      modeWrap.querySelectorAll('.mode').forEach(function(x){x.setAttribute('aria-pressed','false')});
+      b.setAttribute('aria-pressed','true'); mantra.textContent = m[1];
+    });
+    modeWrap.appendChild(b);
+  });
+  mantra.textContent = modes[0][1];
+  var scale = document.getElementById('scale');
+  for(var n=1;n<=10;n++){(function(n){
+    var b=document.createElement('button'); b.type='button'; b.textContent=n; b.setAttribute('aria-label','Şiddet '+n);
+    b.setAttribute('aria-pressed', n===6?'true':'false');
+    b.addEventListener('click',function(){scale.querySelectorAll('button').forEach(function(x){x.setAttribute('aria-pressed','false')});b.setAttribute('aria-pressed','true');});
+    scale.appendChild(b);
+  })(n);}
+
+  // Service buttons preselect form
+  document.querySelectorAll('[data-svc]').forEach(function(a){
+    a.addEventListener('click', function(){ document.getElementById('f-svc').value = a.getAttribute('data-svc'); });
+  });
+
+  // Form
+  var form = document.getElementById('form'), err = document.getElementById('f-err'), ok = document.getElementById('f-ok');
+  form.addEventListener('submit', function(e){
+    e.preventDefault(); err.hidden = true;
+    var name = document.getElementById('f-name').value.trim();
+    var mail = document.getElementById('f-mail').value.trim();
+    var kvkk = document.getElementById('f-kvkk').checked;
+    var msg = !name ? 'Lütfen adını yaz.' : !/^\S+@\S+\.\S+$/.test(mail) ? 'Sana dönebilmem için geçerli bir e-posta adresi yaz.' : !kvkk ? 'Devam etmek için KVKK onay kutusunu işaretle.' : '';
+    if(msg){ err.textContent = msg; err.hidden = false; return; }
+    ok.hidden = false;
+  });
+})();
+</script>
+</body>
+</html>
